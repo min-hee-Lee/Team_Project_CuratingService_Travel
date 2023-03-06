@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
+
+<!-- 로그인 후 화면 보이기2 mvc체크-->
+<!-- interceptor -->
+<mvc:interceptors>
+	<mvc:interceptor>
+		<mvc:mapping path="/*/*.do"/>
+		<mvc:exclude-mapping path="/home.do"/>
+		<mvc:exclude-mapping path="/member/login.do"/>
+		<mvc:exclude-mapping path="/member/signup.do"/>
+		<mvc:exclude-mapping path="/board/list.do"/>
+		<mvc:exclude-mapping path="/board/view.do"/>
+		<bean class="common.interceptor.AuthCheckInterceptor" />
+	</mvc:interceptor>
+</mvc:interceptors>
+
+
+
+
+
+<!-- 게시판6 -->
+
+	<!-- [1] DataSource 빈 선언 -->
+<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+	<property name="driverClassName" value="oracle.jdbc.OracleDriver" />
+	<property name="url" value="jdbc:oracle:thin:@127.0.0.1:1521:xe" />
+	<property name="username" value="hr" />
+	<property name="password" value="a1234" />
+</bean>
+
+
+<!-- [2] SqlSessionFactoryBean 선언 -->
+<bean id="sqlSessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
+	<property name="dataSource" ref="dataSource" />
+	<property name="mapperLocations">
+		<list>
+			<value>classpath:mapper/boardMapper.xml</value>
+			<value>classpath:mapper/memberMapper.xml</value>
+		</list>
+	</property>
+<!--  <property name="configLocation" value="classpath:mapper/congfiguration.xml" /> alias이용할때-->
+</bean>
+
+
+<!-- [3] SqlSessionTemplate 빈 선언 (무의미한 예외처리 안할 수 있게 제공) -->
+<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+	<constructor-arg ref="sqlSessionFactoryBean" />
+</bean>
+
+
+<!-- 선언적 트랜잭션 : <tx:advice>태그를 이용한 트랜잭션 -->
+
+<!-- Spring JDBC나 Mybatis를 이용해서 DB연동을 처리하는 경우
+		DataSourceTransactionManager가 트랙잭션 관리자로 사용된다. -->
+		
+<!-- [4]TransactionManager 빈 선언 -->
+	<bean id="transactionManager"
+	  	class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+	  	<property name="dataSource" ref="dataSource" />
+	  </bean> 
+
+
+<!-- [5] 선언적 트랜잭션 : <tx:advice>태그를 이용한 트랜잭션 처리 -->
+<tx:advice id="txAdvice" transaction-manager="transactionManager">
+	<tx:attributes>
+		<tx:method name="*Process" rollback-for="org.springframework.dao.DuplicateKeyException"/>
+	</tx:attributes>
+</tx:advice>
+	<!-- 트랜잭션을 aop를 이용해 처리 -->
+<aop:config>
+	<aop:pointcut expression="execution(*  service.*ServiceImp.*Process(..))" id="aa" />
+	<aop:advisor advice-ref="txAdvice" pointcut-ref="aa"/>
+</aop:config>
+
+
+
+<!-- 파일 첨부(게시판글쓰기4)-->
+<!-- 임의로 정의하면 안됨. 정해져있음 -->
+<bean id="multipartResolver"
+	  class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+	<property name="maxUploadSize" value="1000000000" />
+	  </bean>
+
+
+<!-- controller -->
+<bean class="com.mycompany.myapp.HomeController" />
+
+
+<!-- tiles -->
+<bean class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
+	<property name="definitions">
+		<list>
+			<value>/WEB-INF/tiles/tiles.xml</value>
+		</list>
+	</property>
+</bean>
+
+
+<!-- ViewResolver value숫자로 순서 정함 -->
+
+<!-- 첨부파일 다운로드4 -->
+<bean class="org.springframework.web.servlet.view.BeanNameViewResolver">
+	<property name="order" value="1" />
+</bean>
+
+
+<bean class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+	<property name="viewClass" value="org.springframework.web.servlet.view.tiles3.TilesView" />
+	<property name="order" value="2" />
+</bean>
+
+<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+	<property name="prefix" value="/WEB-INF/views/" />
+	<property name="suffix" value=".jsp" />
+	<property name="order" value="3" />
+</bean>
+</beans>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
