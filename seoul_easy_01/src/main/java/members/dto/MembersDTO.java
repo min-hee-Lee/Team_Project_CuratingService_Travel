@@ -9,7 +9,10 @@ public class MembersDTO {
 	private String memberEmail;  //이메일
 	private String memberPass; //비밀번호
 	private String memberName; //이름
+	private String memberNickname;  //닉네임
 	private String memberPhone; //전화번호
+	private int birth; //생년월일
+	private int sex; //성별
 	private int memberType; //회원구분 일반회원1, 관리자2
 	private boolean rememberEmail; //자동 로그인 
 	
@@ -17,53 +20,115 @@ public class MembersDTO {
 		
 	}
 
+	
+
 	public String getMemberEmail() {
 		return memberEmail;
 	}
+
+
 
 	public void setMemberEmail(String memberEmail) {
 		this.memberEmail = memberEmail;
 	}
 
+
+
 	public String getMemberPass() {
 		return memberPass;
 	}
+
+
 
 	public void setMemberPass(String memberPass) {
 		this.memberPass = memberPass;
 	}
 
+
+
 	public String getMemberName() {
 		return memberName;
 	}
+
+
 
 	public void setMemberName(String memberName) {
 		this.memberName = memberName;
 	}
 
+
+
+	public String getMemberNickname() {
+		return memberNickname;
+	}
+
+
+
+	public void setMemberNickname(String memberNickname) {
+		this.memberNickname = memberNickname;
+	}
+
+
+
 	public String getMemberPhone() {
 		return memberPhone;
 	}
+
+
 
 	public void setMemberPhone(String memberPhone) {
 		this.memberPhone = memberPhone;
 	}
 
+
+
+	public int getBirth() {
+		return birth;
+	}
+
+
+
+	public void setBirth(int birth) {
+		this.birth = birth;
+	}
+
+
+
+	public int getSex() {
+		return sex;
+	}
+
+
+
+	public void setSex(int sex) {
+		this.sex = sex;
+	}
+
+
+
 	public int getMemberType() {
 		return memberType;
 	}
+
+
 
 	public void setMemberType(int memberType) {
 		this.memberType = memberType;
 	}
 
+
+
 	public boolean isRememberEmail() {
 		return rememberEmail;
 	}
 
+
+
 	public void setRememberEmail(boolean rememberEmail) {
 		this.rememberEmail = rememberEmail;
 	}
+
+
 
 	//로그인 시 입력한 비번과 DB상 비번이 맞는지 확인
 	public boolean matchPassword(String memberPass) {//입력한 비번

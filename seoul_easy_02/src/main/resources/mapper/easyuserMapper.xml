@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="easyusers">
+
+<!-- 회원가입 -->
+
+	<insert id="insertEasyuser" parameterType="easyusers.dto.EasyusersDTO">
+		<![CDATA[
+			INSERT INTO easyusers(email, easyuser_pass, easyuser_name, phone_num, sex, birth, easyuser_type, easyuser_num)
+			VALUES(#{email}, #{easyuser_pass}, #{easyuser_name}, #{phone_num}, #{sex}, #{birth}, #{easyuser_type}, #{easyuser_num})
+		]]>
+	</insert>

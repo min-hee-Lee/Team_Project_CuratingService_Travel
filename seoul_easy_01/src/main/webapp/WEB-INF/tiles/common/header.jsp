@@ -7,7 +7,7 @@
 
 	<div class="container">
 		<div class="navbar-header">
-			<a class="navbar-brand" class="nav-link" href="${pageContext.request.contextPath}/home.do">My Market</a>
+			<a class="navbar-brand" class="nav-link" href="${pageContext.request.contextPath}/home.do">SoeulEasy</a>
 		</div>
 	</div>
 	
@@ -21,12 +21,11 @@
 				
 				<c:otherwise><!-- 로그인이 된 상태이면 보일 것 -->
 					<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/member/logout.do">${sessionScope.authInfo.memberName}님 로그아웃</a></li>
-					<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/member/changepass.do">비밀번호 변경</a></li>
-					<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/member/editmember.do">회원정보 수정</a></li>
+					<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/member/editmember.do">마이페이지</a></li>
 				</c:otherwise>
 				
 			</c:choose>
-			<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/board/list.do?currentPage=1">게시판</a></li>
+
 		</ul>
 	</div>
 </nav>

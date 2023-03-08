@@ -42,14 +42,14 @@
 					<input type="password" class="form-control" name="memberPass" placeholder="Password" required="required">	
 				</div>   
 				
-				<div class="form-check mt-3">
+				<!-- <div class="form-check mt-3">
 				<label class="form-check-label" for="rememberEmail">Email 기억하기:</label>
 					<input type="checkbox" class="form-check-input" name="rememberEmail" placeholder="rememberEmail" id="rememberEmail" > 
 					
-				</div> 
+				</div>  -->
 				     
 				<div class="form-group text-center mt-5">
-				    <input type="text" name="returnUrl" value="${param.returnUrl}" /> 
+				    <%-- <input type="text" name="returnUrl" value="${param.returnUrl}" />  --%>
  					<button type="submit" class="btn btn-dark btn-lg btn-block login-btn" >Login</button>
 				</div>
 			</form>

@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+   
+   <!-- 게시판1 --> 
+ <mapper namespace="board"><!-- configuration에 등록하기-->
+ 	<select id="count" resultType="int"><!-- DAOImp에 선언한 이름과 id를 같게 -->
+ 		SELECT count(*) FROM board
+ 	</select>
+  
+  
+  
+  
+  
+  
+  
+  
+    	  			<!-- 아래 쿼리문 결과값 받기 -->
+  	  	<resultMap type="board.dto.BoardDTO" id="listSelect" autoMapping="true">
+  			<association property="membersDTO" javaType="members.dto.MembersDTO">
+  				<result column="memberName" property="memberName"/>
+  			</association>
+  		</resultMap>
+  
+  <!-- 답변글 포함 레코드 순서 정렬 / 로그인 이후 리스트 보이기-->
+  	<select id="list" parameterType="board.dto.PageDTO" resultMap="listSelect" >
+  		<![CDATA[ 
+  		SELECT b.*
+		FROM(SELECT rownum AS rm, a.*
+			FROM(SELECT b.*, m.memberName 
+				FROM board b, members m
+				WHERE b.memberEmail=m.memberEmail(+)
+    				ORDER BY ref DESC, re_step ASC)a)b
+		WHERE b.rm>=#{startRow} AND b.rm<=#{endRow}
+		]]><!-- ><이 괄호가 식으로 인식되지 않게  -->
+  	</select>
+  	
+  	
+  	
+  	
+  	
+  	
+  	
+  	<!-- 게시판글쓰기5 -->
+  	<!-- DAOImp에 선언한 이름과 id를 같게 -->
+  	
+  	<insert id="save" parameterType="board.dto.BoardDTO">
+  		INSERT INTO board(num, subject, reg_date, readcount, ref, re_step, re_level, content, ip, upload, memberEmail)
+  		VALUES(board_num_seq.nextval, #{subject}, sysdate, 0, 
+  			<choose><!-- ref값이 0이면 제목글, 0이 아니면 답변글 -->
+  				<when test="ref==0">
+  					board_num_seq.nextval, 
+  				</when>
+  				<otherwise>
+  					#{ref},
+  				</otherwise>
+  			</choose>
+  				#{re_step}, #{re_level}, #{content, jdbcType=VARCHAR}, #{ip}, #{upload, jdbcType=VARCHAR}, 
+  				#{memberEmail, jdbcType=VARCHAR}
+  		)
+  	</insert>
+  	
+  	<!-- 게시판 글 클릭하면 조회수 증가 -->
+  	<update id="readCount" parameterType="int">
+  		UPDATE board
+  		SET readCount = readCount + 1
+  		WHERE num=#{num}
+  	</update>
+  
+  	
+  	
+  	
+  	  			<!-- 아래 쿼리문 결과값 받기 -->
+  	  	<resultMap type="board.dto.BoardDTO" id="contentSelect" autoMapping="true">
+  			<association property="membersDTO" javaType="members.dto.MembersDTO">
+  				<result column="memberName" property="memberName"/>
+  			</association>
+  		</resultMap>
+  	
+  	
+  	<!-- 게시판 글 확인 (로그인 후 글확인으로 수정)-->
+  	<select id="content" parameterType="int" resultMap="contentSelect">
+		SELECT b.*, m.memberName
+		FROM board b, members m
+		WHERE b.memberEmail=m.memberEmail(+)
+		AND num=#{num}
+  	</select>
+
+  	
+  	
+  	
+  	
+  	
+  	<!-- 답변글 -->
+  	<update id="reStepCount" parameterType="board.dto.BoardDTO">
+  	UPDATE board
+  	SET re_step = re_step + 1
+  	WHERE ref=#{ref} AND re_step > #{re_step}
+  	</update>
+  	
+  	
+  	<!-- 첨부파일 수정1 -->
+  	<update id="update" parameterType="board.dto.BoardDTO">
+  		UPDATE board
+  		SET subject=#{subject}, content=#{content}
+  		<if test="upload!=null"><!-- if수정할 첨부파일이 있으면 -->
+  			,upload=#{upload}
+  		</if>
+  		WHERE num=#{num}
+  	</update>
+  	
+  	<!-- 첨부파일 수정4 -->
+  	<select id="getFile" parameterType="int" resultType="string">
+  		SELECT upload
+  		FROM board
+  		WHERE num=#{num}
+  	</select>
+  	
+  	<!-- 삭제1 -->
+  	<delete id="delete" parameterType="int">
+  		DELETE FROM board
+  		WHERE num=#{num}
+  	</delete>
+ </mapper>
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 

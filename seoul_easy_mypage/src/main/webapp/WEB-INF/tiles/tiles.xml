@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+       
+<tiles-definitions>
+	<definition name="baseLayout" template="/WEB-INF/tiles/layout/baseLayout.jsp">
+		<put-attribute name="title" value="" />
+		<put-attribute name="heading" value="" />
+		<put-attribute name="subheading" value="" />
+		<put-attribute name="header" value="/WEB-INF/tiles/common/header.jsp" />
+		<put-attribute name="content" value="" />
+		<put-attribute name="footer" value="/WEB-INF/tiles/common/footer.jsp" />
+	</definition>
+	
+	<definition name="home" extends="baseLayout">
+		<put-attribute name="title" value="메인 페이지" />
+		<put-attribute name="heading" value="마이 쇼핑몰" />
+		<put-attribute name="subheading" value="Welcome to MyMarket" />
+		<put-attribute name="content" value="/WEB-INF/views/home.jsp" />
+	</definition>
+	
+	
+	
+	
+	
+		<!-- 게시판 중복되는부분 없애는 오버라이딩 -->
+	<definition name="boardlayout" extends="baseLayout">
+		<put-attribute name="title" value="게시판" />
+		<put-attribute name="heading" value="마이 게시판" />
+		<put-attribute name="subheading" value="Welcome to MyBoard" />
+	</definition>	
+
+	
+	<!-- 게시판8 -->
+	<definition name="board/list" extends="boardlayout">
+		<put-attribute name="content" value="/WEB-INF/views/board/list.jsp" />
+	</definition>
+	
+	<!-- 게시판글쓰기3 -->
+	<definition name="board/write" extends="boardlayout">
+		<put-attribute name="content" value="/WEB-INF/views/board/write.jsp" />
+	</definition>
+
+	<!-- 게시판 글 조회 -->
+	<definition name="board/view" extends="boardlayout">
+		<put-attribute name="content" value="/WEB-INF/views/board/view.jsp" />
+	</definition>
+	
+	<!-- 수정5 -->
+		<definition name="board/update" extends="boardlayout">
+		<put-attribute name="content" value="/WEB-INF/views/board/update.jsp" />
+	</definition>
+	
+	
+	
+	
+	
+	
+	
+		<!-- 중복되는부분 없애는 오버라이딩 -->
+	<definition name="memberLayout" extends="baseLayout">
+		<put-attribute name="title" value="회원정보" />
+		<put-attribute name="heading" value="마이 회원정보" />
+		<put-attribute name="subheading" value="Welcome to MyMember" />
+	</definition>
+	
+	
+	<!-- 회원가입11 -->
+	<definition name="member/signup" extends="memberLayout">
+		<put-attribute name="content" value="/WEB-INF/views/member/signup.jsp" />
+	</definition>
+	
+	<!-- 로그인 -->
+	<definition name="member/login" extends="memberLayout">
+		<put-attribute name="content" value="/WEB-INF/views/member/login.jsp" />
+	</definition>
+	
+	<!-- 회원정보 수정폼3 -->
+	<definition name="member/editmember" extends="memberLayout">
+		<put-attribute name="content" value="/WEB-INF/views/member/editmember.jsp" />
+	</definition>
+	
+		<!-- 비밀번호 변경폼2 -->
+	<definition name="member/changepass" extends="memberLayout">
+		<put-attribute name="content" value="/WEB-INF/views/member/changepass.jsp" />
+	</definition>
+	
+	
+</tiles-definitions>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
