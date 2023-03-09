@@ -15,75 +15,59 @@
 	
 	<definition name="home" extends="baseLayout">
 		<put-attribute name="title" value="메인 페이지" />
-		<put-attribute name="heading" value="마이 쇼핑몰" />
-		<put-attribute name="subheading" value="Welcome to MyMarket" />
+		<put-attribute name="heading" value="서울이지" />
+		<put-attribute name="subheading" value="Welcome to SeoulEasy" />
 		<put-attribute name="content" value="/WEB-INF/views/home.jsp" />
 	</definition>
 	
 	
 	
-	
-	
-		<!-- 게시판 중복되는부분 없애는 오버라이딩 -->
-	<definition name="boardlayout" extends="baseLayout">
-		<put-attribute name="title" value="게시판" />
-		<put-attribute name="heading" value="마이 게시판" />
-		<put-attribute name="subheading" value="Welcome to MyBoard" />
-	</definition>	
-
-	
-	<!-- 게시판8 -->
-	<definition name="board/list" extends="boardlayout">
-		<put-attribute name="content" value="/WEB-INF/views/board/list.jsp" />
-	</definition>
-	
-	<!-- 게시판글쓰기3 -->
-	<definition name="board/write" extends="boardlayout">
-		<put-attribute name="content" value="/WEB-INF/views/board/write.jsp" />
-	</definition>
-
-	<!-- 게시판 글 조회 -->
-	<definition name="board/view" extends="boardlayout">
-		<put-attribute name="content" value="/WEB-INF/views/board/view.jsp" />
-	</definition>
-	
-	<!-- 수정5 -->
-		<definition name="board/update" extends="boardlayout">
-		<put-attribute name="content" value="/WEB-INF/views/board/update.jsp" />
-	</definition>
-	
-	
-	
-	
-	
-	
-	
-		<!-- 중복되는부분 없애는 오버라이딩 -->
-	<definition name="memberLayout" extends="baseLayout">
+	<!-- 회원가입 메인 글씨 -->
+	<definition name="easyuserLayout" extends="baseLayout">
 		<put-attribute name="title" value="회원정보" />
-		<put-attribute name="heading" value="마이 회원정보" />
+		<put-attribute name="heading" value="회원가입" />
 		<put-attribute name="subheading" value="Welcome to MyMember" />
 	</definition>
 	
+	<!-- 로그인 메인 글씨 -->
+	<definition name="easyuserLoginLayout" extends="baseLayout">
+		<put-attribute name="title" value="로그인" />
+		<put-attribute name="heading" value="로그인" />
+		<put-attribute name="subheading" value="Welcome to MyMember" />
+	</definition>
 	
-	<!-- 회원가입11 -->
-	<definition name="member/signup" extends="memberLayout">
-		<put-attribute name="content" value="/WEB-INF/views/member/signup.jsp" />
+		<!-- 회원정보수정 메인 글씨 -->
+	<definition name="easyuserEditLayout" extends="baseLayout">
+		<put-attribute name="title" value="회원정보" />
+		<put-attribute name="heading" value="회원정보 수정" />
+		<put-attribute name="subheading" value="Welcome to MyMember" />
+	</definition>
+	
+			<!--비밀번호변경 메인 글씨 -->
+	<definition name="easyuserEditPassLayout" extends="baseLayout">
+		<put-attribute name="title" value="회원정보" />
+		<put-attribute name="heading" value="비밀번호 변경" />
+		<put-attribute name="subheading" value="Welcome to MyMember" />
+	</definition>
+	
+	<!-- 회원가입 -->
+	<definition name="easyuser/signup" extends="easyuserLayout">
+		<put-attribute name="content" value="/WEB-INF/views/easyuser/signup.jsp" />
 	</definition>
 	
 	<!-- 로그인 -->
-	<definition name="member/login" extends="memberLayout">
-		<put-attribute name="content" value="/WEB-INF/views/member/login.jsp" />
+	<definition name="easyuser/login" extends="easyuserLoginLayout">
+		<put-attribute name="content" value="/WEB-INF/views/easyuser/login.jsp" />
 	</definition>
 	
 	<!-- 회원정보 수정폼3 -->
-	<definition name="member/editmember" extends="memberLayout">
-		<put-attribute name="content" value="/WEB-INF/views/member/editmember.jsp" />
+	<definition name="easyuser/editmember" extends="easyuserEditLayout">
+		<put-attribute name="content" value="/WEB-INF/views/easyuser/editmember.jsp" />
 	</definition>
 	
 		<!-- 비밀번호 변경폼2 -->
-	<definition name="member/changepass" extends="memberLayout">
-		<put-attribute name="content" value="/WEB-INF/views/member/changepass.jsp" />
+	<definition name="easyuser/changepass" extends="easyuserEditPassLayout">
+		<put-attribute name="content" value="/WEB-INF/views/easyuser/changepass.jsp" />
 	</definition>
 	
 	

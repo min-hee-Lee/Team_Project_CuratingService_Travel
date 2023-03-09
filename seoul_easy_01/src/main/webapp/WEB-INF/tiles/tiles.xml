@@ -23,8 +23,8 @@
 	
 	
 	
-	
-		<!-- 게시판 중복되는부분 없애는 오버라이딩 -->
+	<!-- 
+		게시판 중복되는부분 없애는 오버라이딩
 	<definition name="boardlayout" extends="baseLayout">
 		<put-attribute name="title" value="게시판" />
 		<put-attribute name="heading" value="마이 게시판" />
@@ -32,25 +32,25 @@
 	</definition>	
 
 	
-	<!-- 게시판8 -->
+	게시판8
 	<definition name="board/list" extends="boardlayout">
 		<put-attribute name="content" value="/WEB-INF/views/board/list.jsp" />
 	</definition>
 	
-	<!-- 게시판글쓰기3 -->
+	게시판글쓰기3
 	<definition name="board/write" extends="boardlayout">
 		<put-attribute name="content" value="/WEB-INF/views/board/write.jsp" />
 	</definition>
 
-	<!-- 게시판 글 조회 -->
+	게시판 글 조회
 	<definition name="board/view" extends="boardlayout">
 		<put-attribute name="content" value="/WEB-INF/views/board/view.jsp" />
 	</definition>
 	
-	<!-- 수정5 -->
+	수정5
 		<definition name="board/update" extends="boardlayout">
 		<put-attribute name="content" value="/WEB-INF/views/board/update.jsp" />
-	</definition>
+	</definition> -->
 	
 	
 	

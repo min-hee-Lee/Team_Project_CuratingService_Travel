@@ -12,7 +12,7 @@
 	  
 	  
 	  if("${easyusersDTO}"){	     
-	     $("#easyuserEmail").val("${easyusersDTO.email}");
+	     $("#memberEmail").val("${easyusersDTO.email}");
 	     $("#rememberEmail").prop('checked',true);	     
 	  }
 	  
@@ -36,7 +36,7 @@
 		
 			<form name="login" method="post"  action="login.do" >
 				<div class="form-group">
-					<input type="text" class="form-control" name="easyuserEmail" placeholder="Email"  id= "email" required="required">		
+					<input type="text" class="form-control" name="email" placeholder="Email"  id= "email" required="required">		
 				</div>
 				<div class="form-group mt-3">
 					<input type="password" class="form-control" name="easyuser_pass" placeholder="Password" required="required">	

@@ -1,11 +1,14 @@
 package easyusers.dto;
 
+import common.exception.WrongEmailPasswordException;
+
 public class EasyusersDTO {
 
 	//테이블 변수명과 일치해야함
 	private String email;
 	private String easyuser_pass;
 	private String easyuser_name;
+	private String nick_name;
 	private String phone_num;
 	private String sex;
 	private int birth;
@@ -39,6 +42,14 @@ public class EasyusersDTO {
 
 	public void setEasyuser_name(String easyuser_name) {
 		this.easyuser_name = easyuser_name;
+	}
+
+	public String getNick_name() {
+		return nick_name;
+	}
+
+	public void setNick_name(String nick_name) {
+		this.nick_name = nick_name;
 	}
 
 	public String getPhone_num() {
@@ -89,8 +100,24 @@ public class EasyusersDTO {
 		this.rememberEmail = rememberEmail;
 	}
 
-	
-	
+	//로그인시 입력한 비번과 DB상 비번이 맞는지 확인(EasyuserServiceImp에서 예외처리 후 넘어옴)
+	public boolean matchPassword(String easyuser_pass) {
+		return this.easyuser_pass.equals(easyuser_pass);
+	}
+
+	//비밀번호 변경 처리(기존에 입력한 비번과 새로 입력한 비번을 비교)
+	public void changePassword(String oldPassword, String newPassword) {
+		if(!easyuser_pass.equals(oldPassword))
+			throw new WrongEmailPasswordException();
+		this.easyuser_pass=newPassword;
 	
 }
+}
+
+
+
+
+
+
+
 

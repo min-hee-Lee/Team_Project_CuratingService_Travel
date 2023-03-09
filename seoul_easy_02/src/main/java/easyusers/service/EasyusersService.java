@@ -11,6 +11,6 @@ public interface EasyusersService {
 	
 	public EasyusersDTO updateEasyuserProcess(String email);
 	public AuthInfo updateEasyuserProcess(EasyusersDTO dto);
-	public void updateEasyuser_passProcess(String email, ChangePwdCommand changePwd);
+	public void updatePassProcess(String email, ChangePwdCommand changePwd);
 
 }

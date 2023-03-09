@@ -7,7 +7,7 @@
 
 	<div class="container">
 		<div class="navbar-header">
-			<a class="navbar-brand" class="nav-link" href="${pageContext.request.contextPath}/home.do">My Market</a>
+			<a class="navbar-brand" class="nav-link" href="${pageContext.request.contextPath}/home.do">SeoulEasy</a>
 		</div>
 	</div>
 	
@@ -15,13 +15,13 @@
 		<ul class="navbar-nav mr-auto">
 			<c:choose>
 				<c:when test="${sessionScope.authInfo == null}" ><!-- 로그인이 안된 상태이면 -->
-					<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/member/login.do">로그인</a></li>
-					<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/member/signup.do">회원가입</a></li>
+					<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/easyuser/login.do">로그인</a></li>
+					<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/easyuser/signup.do">회원가입</a></li>
 				</c:when>
 				
 				<c:otherwise><!-- 로그인이 된 상태이면 보일 것 -->
-					<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/member/logout.do">${sessionScope.authInfo.memberName}님 로그아웃</a></li>
-					<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/member/editmember.do">마이페이지</a></li>
+					<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/easyuser/logout.do">${sessionScope.authInfo.memberName}님 로그아웃</a></li>
+					<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/easyuser/editmember.do">마이페이지</a></li>
 				</c:otherwise>
 				
 			</c:choose>

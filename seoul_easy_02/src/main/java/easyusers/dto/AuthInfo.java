@@ -11,13 +11,21 @@ public class AuthInfo {
 
 	}
 
-	public AuthInfo(String email, String easyuser_pass, String easyuser_name) {
+	public AuthInfo(String email, String easyuser_pass) {
+		super();
+		this.email = email;
+		this.easyuser_pass = easyuser_pass;
+
+	}
+
+	public AuthInfo(String email, String easyuser_name, String easyuser_pass) {
 		super();
 		this.email = email;
 		this.easyuser_pass = easyuser_pass;
 		this.easyuser_name = easyuser_name;
+		this.easyuser_pass = easyuser_pass;
 	}
-
+	
 	public String getEmail() {
 		return email;
 	}

@@ -19,7 +19,7 @@
 	          </div>
 	          
 	          <div class="mb-3">
-	            <label for="pass">비밀번호</label>
+	            <label for="easyuser_pass">비밀번호</label>
 	            <input type="password"  class="form-control" name="easyuser_pass" 
 	            pattern="[a-zA-Z0-9]{8,15}"  placeholder="영문,숫자 8~15자" required>
 	            <div class="invalid-feedback">
@@ -37,23 +37,53 @@
 	          </div>  -->  
 	          
 	           <div class="mb-3">
-	              <label for="name">이름</label>
+	              <label for="easyuser_name">이름</label>
 	              <input type="text" class="form-control" name="easyuser_name" 
-	              pattern="[가-힣]{3,7}" placeholder="예) 홍길동 " required>
+	              pattern="[가-힣]{2,7}" placeholder="예) 홍길동 " required>
 	              <div class="invalid-feedback">
-	                이름을 형식에 맞게 입력해주세요.(한글 3~7자)
+	                이름을 형식에 맞게 입력해주세요.(한글 2~7자)
+	              </div>
+	            </div>  
+	          
+	          
+	          
+	             <div class="mb-3">
+	              <label for="nick_name">닉네임</label>
+	              <input type="text" class="form-control" name="nick_name" 
+	              pattern="[가-힣]{2,7}" placeholder="예) 귀염둥이 " required>
+	              <div class="invalid-feedback">
+	                닉네임을 형식에 맞게 입력해주세요.(한글 2~7자)
 	              </div>
 	            </div>  
 	          
 	          
 	                
 	          <div class="mb-3">
-	            <label for="email">휴대폰 번호</label>
+	            <label for="phone_num">휴대전화 번호</label>
 	            <input type="text" class="form-control" name="phone_num"  pattern="^010[0-9]{8}$" placeholder="예)01012345678" required>
 	            <div class="invalid-feedback">
-	              휴대폰 번호를 형식에 맞게 입력해주세요.
+	              휴대전화 번호를 형식에 맞게 입력해주세요.
 	            </div>
 	          </div>
+	          
+	          
+	             <div class="mb-3">
+	            <label for="birth">생년월일</label>
+	            <input type="text" class="form-control" name="birth"  pattern="[0-9]{8}" placeholder="예)20100806" required>
+	            <div class="invalid-feedback">
+	              생년월일을 형식에 맞게 입력해주세요.
+	            </div>
+	          </div>
+	          
+	          
+	          
+	              <div class="form-group">
+                   <label for="sex">성별 </label>
+                    <input type="radio" name="sex" value="M">남
+                    <input type="radio" name="sex" value="F">여
+                 </div>
+	          
+	          
 	          
 	
 	          <hr class="mb-4">

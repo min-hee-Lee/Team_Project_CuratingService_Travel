@@ -1,6 +1,6 @@
 package common.exception;
 
-public class WrongEmailPasswordException {
+public class WrongEmailPasswordException extends RuntimeException {
 
 	public WrongEmailPasswordException() {
 		

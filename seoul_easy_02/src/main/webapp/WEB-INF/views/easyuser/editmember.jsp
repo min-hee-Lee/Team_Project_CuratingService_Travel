@@ -48,10 +48,10 @@
 	          
 	                
 	          <div class="mb-3">
-	            <label for="phone_num">휴대폰 번호</label>
+	            <label for="phone_num">휴대전화 번호</label>
 	            <input type="text" class="form-control" name="phone_num"  pattern="^010[0-9]{8}$" value="${easyusersDTO.phone_num}" required>
 	            <div class="invalid-feedback">
-	              휴대폰 번호를 형식에 맞게 입력해주세요.
+	              휴대전화 번호를 형식에 맞게 입력해주세요.
 	            </div>
 	          </div>
 	          
