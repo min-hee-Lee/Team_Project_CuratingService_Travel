@@ -7,6 +7,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.slf4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -46,6 +47,7 @@ public class EasyusersController {
 		session.setAttribute("authInfo", authInfo);
 		return "redirect:/home.do";
 	}
+	
 	
 	//회원가입 하면 바로 로그인 되므로 로그아웃
 	@RequestMapping(value="/easyuser/logout.do")

@@ -12,7 +12,7 @@
 	  
 	  
 	  if("${easyusersDTO}"){	     
-	     $("#memberEmail").val("${easyusersDTO.email}");
+	     $("#email").val("${easyusersDTO.email}");
 	     $("#rememberEmail").prop('checked',true);	     
 	  }
 	  
@@ -49,7 +49,7 @@
 				</div>  -->
 				     
 				<div class="form-group text-center mt-5">
-				    <input type="text" name="returnUrl" value="${param.returnUrl}" /> 
+				    <!-- <input type="text" name="returnUrl" value="${param.returnUrl}" />  -->
  					<button type="submit" class="btn btn-dark btn-lg btn-block login-btn" >Login</button>
 				</div>
 			</form>

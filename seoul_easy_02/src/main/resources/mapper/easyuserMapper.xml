@@ -9,17 +9,15 @@
 
 	<insert id="insertEasyuser" parameterType="easyusers.dto.EasyusersDTO">
 		<![CDATA[
-			INSERT INTO easyusers(email, easyuser_pass, easyuser_name, nick_name, phone_num, sex, birth, easyuser_type, easyuser_num)
+			INSERT INTO easyuser(email, easyuser_pass, easyuser_name, nick_name, phone_num, sex, birth, easyuser_type, easyuser_num)
 			VALUES(#{email}, #{easyuser_pass}, #{easyuser_name}, #{nick_name}, #{phone_num}, #{sex}, #{birth}, #{easyuser_type}, #{easyuser_num})
 		]]>
 	</insert>
 	
-	
-	
 <!-- 로그인(해당 이메일에 포함된 데이터를 가져오는 쿼리문 -->
 	<select id="selectByEmail" parameterType="string" resultType="easyusers.dto.EasyusersDTO">
 		SELECT * FROM easyuser
-		WHERE email = #{email}
+		WHERE email =#{email}
 	</select>
 
 

@@ -1,0 +1,29 @@
+@charset "UTF-8";
+       .wrapper{
+            width: 400px;
+            height: 400px;
+            border: 1px solid red;
+            position: relative;
+            overflow: hidden;
+        }
+        .wrapper img{
+            width: 400px;
+            position: absolute;
+            top: 0;
+            transition: left 0.4s ease-out;
+        }
+        .wrapper img:nth-child(1){
+            left: 0;
+        }
+        .wrapper img:nth-child(2){
+            left: 400px;
+        }
+        .wrapper img:nth-child(3){
+            left: 800px;
+        }
+        .wrapper img:nth-child(4){
+            left: 1200px;
+        }
+        .wrapper img:nth-child(5){
+            left: 1600px;
+        }

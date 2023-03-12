@@ -4,6 +4,8 @@
     "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
     
 <mapper namespace="members">
+
+
 	
 	<!--  회원가입2 --> 
 	<insert id="insertMember" parameterType="members.dto.MembersDTO">
@@ -13,11 +15,13 @@
 		]]>
 	</insert>
 	
-		<!-- 로그인 (해당 이메일에 해당되는 데이터를 가져오라는 쿼리문)-->
+		 <!-- 로그인 (해당 이메일에 해당되는 데이터를 가져오라는 쿼리문) -->
 	<select id="selectByEmail" parameterType="string" resultType="members.dto.MembersDTO">
 		SELECT * FROM members
 		WHERE memberEmail = #{memberEmail}
 	</select>
+	
+	
 	
 	<!-- 회원정보수정처리1 -->
 		<update id="updateMember" parameterType="members.dto.MembersDTO">

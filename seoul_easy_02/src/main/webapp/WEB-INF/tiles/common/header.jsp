@@ -20,7 +20,7 @@
 				</c:when>
 				
 				<c:otherwise><!-- 로그인이 된 상태이면 보일 것 -->
-					<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/easyuser/logout.do">${sessionScope.authInfo.memberName}님 로그아웃</a></li>
+					<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/easyuser/logout.do">${sessionScope.authInfo.easyuser_name}님 로그아웃</a></li>
 					<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/easyuser/editmember.do">마이페이지</a></li>
 				</c:otherwise>
 				

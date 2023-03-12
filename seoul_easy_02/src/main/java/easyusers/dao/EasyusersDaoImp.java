@@ -18,26 +18,27 @@ public class EasyusersDaoImp implements EasyusersDAO{
 	
 	@Override
 	public int insertEasyuser(EasyusersDTO dto) {
-		return sqlSession.insert("easyusers.insertEasyuser", dto);
+		return sqlSession.insert("easyuser.insertEasyuser", dto);
 	}
 	
 	@Override
 	public EasyusersDTO selectByEmail(String email) {
-		return sqlSession.selectOne("easyusers.selectByEmail", email);
+		return sqlSession.selectOne("easyuser.selectByEmail", email);
 	}
 
 	//회원정보 수정
 	@Override
 	public void updateEasyuser(EasyusersDTO dto) {
-		sqlSession.update("easyusers.updateEasyuser", dto);
+		sqlSession.update("easyuser.updateEasyuser", dto);
 	}
 	
 	//비밀번호 변경
 	@Override
 	public void updateByPass(EasyusersDTO dto) {
-		sqlSession.update("easyusers.updateByPass", dto);
+		sqlSession.update("easyuser.updateByPass", dto);
 		
 	}
+	
 }
 
 
